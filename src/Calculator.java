@@ -10,7 +10,6 @@ public class Calculator extends JFrame implements ActionListener{
     JButton addButton, subButton, mulButton, divButton, negButton;
     JButton decButton, equButton, delButton, clrButton, perButton;
     JPanel panel1;
-    JPanel panel2;
 
     Font font = new Font("Helvetica", Font.PLAIN, 30);
 
