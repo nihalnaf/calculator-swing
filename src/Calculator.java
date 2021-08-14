@@ -2,7 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
-public class Calculator extends JFrame implements ActionListener{
+public class Calculator extends JFrame implements ActionListener, KeyListener{
 
     JTextField textfield;
     JButton[] numberButtons = new JButton[10];
@@ -33,6 +33,7 @@ public class Calculator extends JFrame implements ActionListener{
         textfield.setBounds(0, 0, 420, 240);
         textfield.setFont(font);
         textfield.setEditable(false);
+        textfield.addKeyListener(this);
 
         addButton = new JButton("+");
         subButton = new JButton("-");
@@ -145,7 +146,9 @@ public class Calculator extends JFrame implements ActionListener{
             textfield.setText("");
         }
         if(e.getSource() == equButton) {
-            num2 = Double.parseDouble(textfield.getText());
+            if(operator == '+' || operator == '-' || operator == '*' || operator == '/') {
+                num2 = Double.parseDouble(textfield.getText());
+            }
 
             switch(operator) {
                 case '+':
@@ -159,6 +162,10 @@ public class Calculator extends JFrame implements ActionListener{
                     break;
                 case '/':
                     result = num1 / num2;
+                    break;
+                default:
+                    num1 = Double.parseDouble(textfield.getText());
+                    result = num1;
                     break;
             }
             textfield.setText(String.valueOf(result));
@@ -184,5 +191,88 @@ public class Calculator extends JFrame implements ActionListener{
             temporary /= 100;
             textfield.setText(String.valueOf(temporary));
         }
+    }
+
+    @Override
+    public void keyTyped(KeyEvent e) {
+
+    }
+
+    @Override
+    public void keyPressed(KeyEvent e) {
+        switch(e.getKeyChar()) {
+            case '0':
+                numberButtons[0].doClick();
+                break;
+            case '1':
+                numberButtons[1].doClick();
+                break;
+            case '2':
+                numberButtons[2].doClick();
+                break;
+            case '3':
+                numberButtons[3].doClick();
+                break;
+            case '4':
+                numberButtons[4].doClick();
+                break;
+            case '5':
+                numberButtons[5].doClick();
+                break;
+            case '6':
+                numberButtons[6].doClick();
+                break;
+            case '7':
+                numberButtons[7].doClick();
+                break;
+            case '8':
+                numberButtons[8].doClick();
+                break;
+            case '9':
+                numberButtons[9].doClick();
+                break;
+            case '%':
+                perButton.doClick();
+                break;
+            case '+':
+                addButton.doClick();
+                break;
+            case '-':
+                subButton.doClick();
+                break;
+            case '*':
+                mulButton.doClick();
+                break;
+            case '/':
+                divButton.doClick();
+                break;
+            case '.':
+                decButton.doClick();
+                break;
+            case '=':
+                equButton.doClick();
+                break;
+        }
+
+        switch(e.getKeyCode()) {
+            case KeyEvent.VK_ENTER:
+                equButton.doClick();
+                break;
+            case KeyEvent.VK_BACK_SPACE:
+            case KeyEvent.VK_DELETE:
+                delButton.doClick();
+                break;
+            case KeyEvent.VK_ESCAPE:
+                clrButton.doClick();
+                break;
+            case KeyEvent.VK_F9:
+                negButton.doClick();
+                break;
+        }
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e) {
+
     }
 }
