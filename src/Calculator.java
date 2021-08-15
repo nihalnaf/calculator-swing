@@ -153,26 +153,31 @@ public class Calculator extends JFrame implements ActionListener, KeyListener{
             switch(operator) {
                 case '+':
                     result = num1 + num2;
+                    textfield.setText(String.valueOf(result));
                     break;
                 case '-':
                     result = num1 - num2;
+                    textfield.setText(String.valueOf(result));
                     break;
                 case '*':
                     result = num1 * num2;
+                    textfield.setText(String.valueOf(result));
                     break;
                 case '/':
                     result = num1 / num2;
                     break;
                 default:
-                    num1 = Double.parseDouble(textfield.getText());
-                    result = num1;
+                    textfield.setText(String.valueOf(result));
                     break;
             }
             textfield.setText(String.valueOf(result));
-            num1 = result;
+            operator = ' ';
         }
         if(e.getSource() == clrButton) {
             textfield.setText("");
+            num1 = 0;
+            num2 = 0;
+            result = 0;
         }
         if(e.getSource() == delButton) {
             String string = textfield.getText();
