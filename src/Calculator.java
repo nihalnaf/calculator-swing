@@ -104,6 +104,7 @@ public class Calculator extends JFrame implements ActionListener, KeyListener{
         panel1.add(decButton);
         panel1.add(equButton);
         panel1.add(addButton);
+        equButton.setEnabled(false);
 
         this.add(panel1);
         this.add(textfield);
@@ -129,21 +130,41 @@ public class Calculator extends JFrame implements ActionListener, KeyListener{
             num1 = Double.parseDouble(textfield.getText());
             operator = '+';
             textfield.setText("");
+            addButton.setEnabled(false);
+            subButton.setEnabled(false);
+            mulButton.setEnabled(false);
+            divButton.setEnabled(false);
+            equButton.setEnabled(true);
         }
         if(e.getSource() == subButton) {
             num1 = Double.parseDouble(textfield.getText());
             operator = '-';
             textfield.setText("");
+            addButton.setEnabled(false);
+            subButton.setEnabled(false);
+            mulButton.setEnabled(false);
+            divButton.setEnabled(false);
+            equButton.setEnabled(true);
         }
         if(e.getSource() == mulButton) {
             num1 = Double.parseDouble(textfield.getText());
             operator = '*';
             textfield.setText("");
+            addButton.setEnabled(false);
+            subButton.setEnabled(false);
+            mulButton.setEnabled(false);
+            divButton.setEnabled(false);
+            equButton.setEnabled(true);
         }
         if(e.getSource() == divButton) {
             num1 = Double.parseDouble(textfield.getText());
             operator = '/';
             textfield.setText("");
+            addButton.setEnabled(false);
+            subButton.setEnabled(false);
+            mulButton.setEnabled(false);
+            divButton.setEnabled(false);
+            equButton.setEnabled(true);
         }
         if(e.getSource() == equButton) {
             if(operator == '+' || operator == '-' || operator == '*' || operator == '/') {
@@ -172,12 +193,22 @@ public class Calculator extends JFrame implements ActionListener, KeyListener{
             }
             textfield.setText(String.valueOf(result));
             operator = ' ';
+            addButton.setEnabled(true);
+            subButton.setEnabled(true);
+            mulButton.setEnabled(true);
+            divButton.setEnabled(true);
+            equButton.setEnabled(false);
         }
         if(e.getSource() == clrButton) {
             textfield.setText("");
             num1 = 0;
             num2 = 0;
             result = 0;
+            addButton.setEnabled(true);
+            subButton.setEnabled(true);
+            mulButton.setEnabled(true);
+            divButton.setEnabled(true);
+            equButton.setEnabled(false);
         }
         if(e.getSource() == delButton) {
             String string = textfield.getText();
